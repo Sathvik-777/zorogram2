@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Zorogram - Trip Popup</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 40px;
+      text-align: center;
+    }
+
+    /* Button styling */
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* Popup hidden by default */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .popup-content input {
+      width: 100%;
+      padding: 10px;
+      margin: 12px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .popup-content button[type="submit"] {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .popup-content button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Zorogram</h1>
+  <button onclick="openPopup()">Start Trip</button>
+
+  <!-- Hidden Popup -->
+  <div id="popup" class="popup" style="display: none;">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <h2>Enter Trip Details</h2>
+      <form onsubmit="submitTrip(event)">
+        <input type="text" id="tripName" placeholder="Trip Name" required>
+        <input type="number" id="tripDays" placeholder="Number of Days" required>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openPopup() {
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    function submitTrip(event) {
+      event.preventDefault();
+      const tripName = document.getElementById("tripName").value;
+      const tripDays = document.getElementById("tripDays").value;
+
+      alert(`Trip Name: ${tripName}\nDays: ${tripDays}`);
+      closePopup();
+
+      // You can now generate Day buttons or store values
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zorogram Day Form</title>
+  <link rel="stylesheet" href="form.css" />
+</head>
+<body>
+  <div class="form-container">
+    <div class="form">
+      <div class="tab-container">
+        <div class="tab active" onclick="showSection('food', event)">Food</div>
+        <div class="tab" onclick="showSection('accommodation', event)">Accommodation</div>
+        <div class="tab" onclick="showSection('travel', event)">Travel</div>
+      </div>
+
+      <!-- FOOD SECTION -->
+      <div class="section active" id="food">
+        <div class="input-group">
+          <select id="foodType">
+            <option value="">Type</option>
+            <option>Breakfast</option>
+            <option>Lunch</option>
+            <option>Dinner</option>
+            <option>Snack</option>
+          </select>
+          <input type="text" id="foodName" placeholder="Food Name" />
+          <input type="number" id="foodPrice" placeholder="Price" />
+          <input type="text" id="foodLocation" placeholder="Enter location or use button" />
+          <button type="button" onclick="getLocationAndSetAddress('foodLocation')">📍</button>
+          <button onclick="addFood()">Add</button>
+        </div>
+        <div class="cart" id="foodCart"></div>
+      </div>
+
+      <!-- ACCOMMODATION SECTION -->
+      <div class="section" id="accommodation">
+        <div class="input-group">
+          <input type="text" id="hotelName" placeholder="Hotel Name" />
+          <input type="number" id="hotelCost" placeholder="Cost" />
+          <input type="text" id="hotelLocation" placeholder="Address" />
+          <button onclick="getLocationAndSetAddress('hotelLocation')">📍</button>
+          <button onclick="addHotel()">Add</button>
+        </div>
+        <div class="cart" id="hotelCart"></div>
+      </div>
+
+      <!-- TRAVEL SECTION -->
+      <div class="section" id="travel">
+        <div class="input-group">
+          <select id="travelType" onchange="toggleTravelCostField()">
+            <option value="">Travel Type</option>
+            <option value="bike">Bike</option>
+            <option value="car">Car</option>
+            <option value="rtc">RTC</option>
+            <option value="train">Train</option>
+          </select>
+          <input type="number" id="travelCost" placeholder="Cost" />
+          <input type="text" id="fromPlace" placeholder="From" />
+          <input type="text" id="toPlace" placeholder="To" />
+          <button onclick="addTravel()">Add</button>
+        </div>
+        <div class="cart" id="travelCart"></div>
+      </div>
+
+      <!-- SUBMIT BUTTON -->
+      <div class="submit-container">
+        <button onclick="submitForm()">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="form.js"></script>
+</body>
+</html>
